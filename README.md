@@ -8,24 +8,37 @@ egret白鹭引擎的学习心得总结
 3.TypeScript基本数据类型：Boolean，Number，String，Array，Enum，Any，Void。
 
 4.Egret GUI系统的特性：
+
 (1).皮肤分离机制:皮肤分离机制就是把GUI控件的外观与逻辑处理分离开来。控件的逻辑代码只负责动态的逻辑处理，如事件监听和数据刷新。而皮肤部件只负责控件的外观，如实例化子项，设置控件的样式和布局等静态的属性。
+
 (2).失效验证机制
+
 (3).自适应流式布局
 
 5.Egret中的事件机制：事件发送者.addEventListener(事件类型，侦听器，this)；
 
 6.Egret命令行介绍
+
 (1)build:构建制定项目，编译制定项目的TypeScript文件
+
 (2)create:创建新项目
+
 (3)create_app：从h5游戏生成app
+
 (4)create_mainfest:在工程目录下生成manifest.json清单文件
+
 (5)info:获取Egret信息
+
 (6)publish:发布项目，使用GooleClosureCompiler压缩代码
+
 (7)startserver:启动HttpServer，并在默认浏览器中打开指定项目。
+
 (8)upgrade:升级项目代码
 
 7.加载游戏资源：
+
 RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComp,this);
+
 RES.loadConfig("resource/resource.json","resource/");
 
 8.核心显示类
