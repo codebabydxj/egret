@@ -276,52 +276,81 @@ hitTestPoint这个方法是执行一次碰撞检测，检测的对象是当前sh
 49.所有显示对象都可以添加EnterFrame侦听器，用于处理帧事件
 
 private createScene():void {
+
 	var sprite: egret.Sprite = new egret.Sprite();
+	
 	sprite.addEventListener(egret.Event.ENTER_FRAME,this.onEnterFrame,this);
+
 }
 
 private onEnterFrame()
+
 {
+
 	console.log("aaaa");
+
 }
 
 50.Timer类实现计时器的功能
 
 private createScene():void {
+	
 	var timer: egret.Timer = new egret.Timer(1000);
+	
 	timer.addEventListener(egret.TimerEvent.TIMER,this.onTimerHandler,this);
+	
 	timer.start();
+
 }
 
 51.Tween提供一组缓动算法
 
 private createScene():void {
+	
 	var sprite: egret.Sprite = new egret.Sprite();
+	
 	//Tween的所有都以毫秒为单位
+	
 	egret.Tween.get(sprite).wait(2000).to({ x: 100 },1500).call(this.onComplete);
+	
 	//egret.Tween.removeTweens(sprite);
+
 }
 
 private onComplete()
+
 {
+	
 	console.log("aaaa");
+
 }
 
 52.Event类作为创建Event对象的基类，当发生事件时，Event对象将作为参数传递给事件侦听器。
 
 private createScene():void {
+	
 	var eventDispatcher: egret.EventDispatcher = new egret.EventDispatcher();
+	
 	//注册和删除侦听的时候一定要传入this，这里和Flash区别
+	
 	eventDispatcher.addEventListener("MyEvent",this.onEventHandler,this);
+	
 	eventDispatcher.dispatchEvent(new egret.Event("MyEvent",false,false));
+
 }
 
 private onEventHandler(event:egret.Event):void
+
 {
+	
 	var type: string = event.type;
+	
 	console.log("------" + type);//------MyEvent
+	
 	event.stopImmediatePropagation();
+	
 	event.stopPropagation();
+
 }
 
 53.TextField是egret的文本渲染类，采用浏览器/设备的API进行渲染，在不同的浏览器/设备中由于字体渲染方式不一，可能会有渲染差异。
@@ -331,21 +360,35 @@ private onEventHandler(event:egret.Event):void
 55.MouseEvent：鼠标事件相关。由于js的this是动态地，所以添加和删除事件的时候，需要传入this参数。
 
 private createScene():void {
+	
 	var sprite: egret.Sprite = new egret.Sprite();
+	
 	sprite.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onMouseHandler,this);
+	
 	sprite.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.onMouseHandler,this);
+	
 	sprite.addEventListener(egret.TouchEvent.TOUCH_END,this.onMouseHandler,this);
+	
 	sprite.addEventListener(egret.TouchEvent.TOUCH_MOVE,this.onMouseHandler,this,true);
+
 }
 
 private onMouseHandler(event: egret.TouchEvent): void {
+	
 	var stageX: number = event.stageX;
+	
 	var stageY: number = event.stageY;
+	
 	var localX: number = event.stageX;
+	
 	var localY: number = event.localY;
+	
 	var target: any = event.target;
+	
 	var currentTarget: any = event.currentTarget;
+	
 	console.log("======");
+
 }
 
 56.egret.全局函数
